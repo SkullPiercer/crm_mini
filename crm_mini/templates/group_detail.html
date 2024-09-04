@@ -16,7 +16,7 @@
 <hr>
 <h1>Список учеников</h1>
 {% for student in all_students %}
-  {{ student.name }} <br>
+  <a href="{% url 'back:student_detail' student.id %}">{{ student.name }}</a> <br>
 {% endfor %}
 </body>
 </html>

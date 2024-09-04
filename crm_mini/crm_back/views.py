@@ -43,3 +43,9 @@ def group_detail(request, id):
     all_students = Student.objects.filter(group=group)
 
     return render(request, template, context={'group': group, 'form': form, 'all_students':all_students})
+
+
+def student_detail(request, id):
+    template = 'student_detail.html'
+    student = Student.objects.get(id=id)
+    return render(request, template, context={'student':student})
