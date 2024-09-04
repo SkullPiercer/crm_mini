@@ -6,10 +6,25 @@
 </head>
 <body>
   <a href="{% url 'back:home' %}">← Обратно на домашнюю страницу</a>
-    {% for group in groups %}
-      <hr>
-        {{ group.id }}
-      <hr>
-    {% endfor %}
+  <table border="1" style="font-size:20px;">
+      {% for group in groups %}
+        <tr>
+          <td>
+              {{ group.id }}
+          </td>
+            <td>
+              {{ group.time|date:"H:i" }}
+          </td>
+            <td>
+              {{ group.date }}
+          </td>
+        <td>
+            <a href="">Заглянуть внутрь</a>
+        </td>
+
+        <tr>
+      {% endfor %}
+  </table>
+
 </body>
 </html>
