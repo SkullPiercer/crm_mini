@@ -5,7 +5,18 @@
     <title>Группа</title>
 </head>
 <body>
+<a href="{% url 'back:home' %}">← Обратно на домашнюю страницу</a>
   <h1>Группа #{{ group.id }}</h1>
-
+  <h2>Добавить ученика</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Добавить Ученика</button>
+    </form>
+<hr>
+<h1>Список учеников</h1>
+{% for student in all_students %}
+  {{ student.name }} <br>
+{% endfor %}
 </body>
 </html>
