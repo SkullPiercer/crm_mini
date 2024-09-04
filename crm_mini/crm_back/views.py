@@ -25,3 +25,9 @@ def create_group(request):
     else:
         form = GroupForm()
     return render(request, 'create_group.html', {'form': form})
+
+
+def group_detail(request, id):
+    template = 'group_detail.html'
+    group = Group.objects.get(id=id)
+    return render(request, template, context={'group' : group})
