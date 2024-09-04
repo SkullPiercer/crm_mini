@@ -1,0 +1,13 @@
+from django.contrib import admin
+from django.urls import path
+
+from . import views
+
+app_name = 'back'
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('create_group/', views.create_group, name='create_group'),
+    path('group_list/', views.group_list, name='group_list'),
+]

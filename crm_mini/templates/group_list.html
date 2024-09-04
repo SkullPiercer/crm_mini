@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-  <a href="{% url 'home' %}">← Обратно на домашнюю страницу</a>
+  <a href="{% url 'back:home' %}">← Обратно на домашнюю страницу</a>
     {% for group in groups %}
       <hr>
-        {{ group }}
+        {{ group.id }}
       <hr>
     {% endfor %}
 </body>
