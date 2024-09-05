@@ -8,6 +8,11 @@
   {% include "includes/header.html" %}
   <h1>СПИСОК ВСЕХ УЧЕНИКОВ</h1>
   <ul>
+    <form method="GET" action="{% url 'back:students_list' %}">
+        <input type="text" name="name" placeholder="Введите имя ученика">
+        <button type="submit">Поиск</button>
+    </form>
+
     {% for student in students %}
       <li>{{ student.id }} {{ student.name }} <a href="{% url 'back:student_detail' student.id %}">Инфо</a></li>
     {% endfor %}

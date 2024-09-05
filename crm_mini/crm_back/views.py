@@ -66,5 +66,9 @@ def download_data(request):
 
 def students_list(request):
     template = 'students_list.html'
-    students = Student.objects.all()
+    name = request.GET.get('name')
+    if name:
+        students = Student.objects.filter(name__icontains=name)
+    else:
+        students = Student.objects.all()
     return render(request, template, context={'students':students})
