@@ -5,6 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-    Страница стулента с ID {{ student.id }}
+    Страница студента с ID {{ student.id }}
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Добавить данные Ученика</button>
+    </form>
+<h1>Информация</h1>
+<ul>
+    <li>{{ student.id }}</li>
+    <li>{{ student.name }}</li>
+    <li>{{ student.age }}</li>
+    <li>{{ student.description }}</li>
+    <li>{{ student.recommended_direction }}</li>
+    <li>{{ student.recommended_group }}</li>
+    <li>{{ student.responsiveness }}</li>
+    <li>{{ student.group.id }}</li>
+    <li>{{ student.parents }}</li>
+    <li>{{ student.manager_description }}</li>
+</ul>
 </body>
 </html>

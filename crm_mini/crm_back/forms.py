@@ -20,3 +20,15 @@ class StudentCreateForm(forms.ModelForm):
         if group:
             self.fields['group'].initial = group
 
+
+class StudentUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = (
+            'description',
+            'recommended_direction',
+            'recommended_group',
+            'responsiveness',
+            'manager_description'
+        )
+

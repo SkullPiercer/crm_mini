@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 
-from .forms import GroupForm, StudentCreateForm
+from .forms import GroupForm, StudentCreateForm, StudentUpdateForm
 from .models import Group, Student
 
 
@@ -48,4 +48,9 @@ def group_detail(request, id):
 def student_detail(request, id):
     template = 'student_detail.html'
     student = Student.objects.get(id=id)
-    return render(request, template, context={'student':student})
+
+    if request.method == 'POST':
+        ...
+    else:
+        form = StudentUpdateForm()
+    return render(request, template, context={'student':student, 'form': form})
