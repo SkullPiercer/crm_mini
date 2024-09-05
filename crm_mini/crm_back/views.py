@@ -13,7 +13,11 @@ def home(request):
 
 def group_list(request):
     template = 'group_list.html'
-    groups = Group.objects.all()
+    date = request.GET.get('date')
+    if date:
+        groups = Group.objects.filter(date=date)
+    else:
+        groups = Group.objects.all()
     return render(request, template, context={'groups': groups})
 
 
