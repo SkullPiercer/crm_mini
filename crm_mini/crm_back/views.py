@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 
@@ -50,7 +51,10 @@ def student_detail(request, id):
     student = Student.objects.get(id=id)
 
     if request.method == 'POST':
-        ...
+        form = StudentUpdateForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(request.path_info)
     else:
-        form = StudentUpdateForm()
+        form = StudentUpdateForm(instance=student)
     return render(request, template, context={'student':student, 'form': form})

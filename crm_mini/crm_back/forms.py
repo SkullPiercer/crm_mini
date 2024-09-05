@@ -32,3 +32,4 @@ class StudentUpdateForm(forms.ModelForm):
             'manager_description'
         )
 
+    manager_description = forms.CharField(required=False)

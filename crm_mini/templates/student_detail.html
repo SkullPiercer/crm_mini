@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <a href="{% url 'back:home' %}">← Обратно на домашнюю страницу</a><br>
     Страница студента с ID {{ student.id }}
     <form method="post">
         {% csrf_token %}
@@ -13,16 +14,25 @@
     </form>
 <h1>Информация</h1>
 <ul>
-    <li>{{ student.id }}</li>
-    <li>{{ student.name }}</li>
-    <li>{{ student.age }}</li>
-    <li>{{ student.description }}</li>
+
+    <li>ID студента: {{ student.id }}</li>
+    <li>Имя студента: {{ student.name }}</li>
+    <li>Возраст студента: {{ student.age }}</li>
+    {% if student.description %}
+        <li>ОС от преподавателя: {{ student.description }}</li>
+    {% else %}
+        <li>ОС от преподавателя пока нет</li>
+    {% endif %}
     <li>{{ student.recommended_direction }}</li>
     <li>{{ student.recommended_group }}</li>
-    <li>{{ student.responsiveness }}</li>
-    <li>{{ student.group.id }}</li>
-    <li>{{ student.parents }}</li>
-    <li>{{ student.manager_description }}</li>
+    <li>Отзывчивость на уроке: {{ student.responsiveness }}</li>
+    <li>ID Группы пробного урока: {{ student.group.id }}</li>
+    <li>Инфо о родителях: {{ student.parents }}</li>
+    {% if student.manager_description %}
+        <li>Заметка менеджера: {{ student.manager_description }}</li>
+    {% else %}
+        <li>Заметка менеджера отсутствует</li>
+    {% endif %}
 </ul>
 </body>
 </html>

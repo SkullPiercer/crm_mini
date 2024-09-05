@@ -10,26 +10,28 @@ class Student(models.Model):
         ('junior', 'Младшая'),
         ('middle', 'Средняя'),
         ('senior', 'Старшая'),
+        ('not selected', 'Не выбрано'),
     ]
 
     RECOMMENDED_DIRECTION_CHOICES = [
         ('sisters', 'Sisters'),
         ('it', 'IT'),
+        ('not selected', 'Не выбрано'),
     ]
 
     name = models.CharField(max_length=30)
     age = models.PositiveSmallIntegerField()
     description = models.TextField(blank=True)
     recommended_direction = models.CharField(
-        max_length=10,
+        max_length=12,
         choices=RECOMMENDED_DIRECTION_CHOICES,
-        default='sisters',
+        default='Не выбрано',
         blank=True
     )
     recommended_group = models.CharField(
-        max_length=10,
+        max_length=12,
         choices=RECOMMENDED_GROUP_CHOICES,
-        default='junior',
+        default='Не выбрано',
         blank=True
     )
     responsiveness = models.PositiveSmallIntegerField(
@@ -39,7 +41,7 @@ class Student(models.Model):
     )
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     parents = models.TextField()
-    manager_description = models.CharField(max_length=100)
+    manager_description = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.name
