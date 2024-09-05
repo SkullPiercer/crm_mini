@@ -75,11 +75,18 @@ def download_data(request):
     if not date:
         return HttpResponse("Дата не указана", status=400)
 
-    groups = Group.objects.filter(date=date)
+    groups = Group.objects.filter(date=date).prefetch_related('student_set')
+    date = f'{date[-2:]}-{date[-5:-3]}-{date[:4]}'
+    content = f"Данные за {date}\n"
 
-    content = "ID, Название, Время\n"
     for group in groups:
-        content += f"{group.id}, {group.time}\n"
+        content += f'\nГруппа ID: {group.id}, Дата: {group.date}, Время: {group.time}\n'
+        for student in group.student_set.all():
+            content += (f"\nID Учащегося: {student.id}, Имя: {student.name}, Возраст: {student.age}, "
+                        f"Описание: {student.description}, Направление: {student.recommended_direction}, Группа: {student.recommended_group}, "
+                        f"Ответственность: {student.responsiveness}, Родители: {student.parents}\n")
+        content += '\n-----------------------------------------------------------------------------------------\n'
+        content += '\n'
 
     file_name = f'{date}_data.txt'
     response = HttpResponse(content_type='text/plain')
