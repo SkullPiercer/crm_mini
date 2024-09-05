@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import GroupForm, StudentCreateForm, StudentUpdateForm
 from .models import Group, Student
@@ -30,7 +30,7 @@ def create_group(request):
 
 def group_detail(request, id):
     template = 'group_detail.html'
-    group = Group.objects.get(id=id)
+    group = get_object_or_404(Group, id=id)
 
     if request.method == 'POST':
         form = StudentCreateForm(request.POST, group=group)
@@ -48,7 +48,7 @@ def group_detail(request, id):
 
 def student_detail(request, id):
     template = 'student_detail.html'
-    student = Student.objects.get(id=id)
+    student = get_object_or_404(Student, id=id)
 
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, instance=student)

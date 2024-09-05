@@ -16,6 +16,7 @@
     {% for student in students %}
       <li>{{ student.id }} {{ student.name }} <a href="{% url 'back:student_detail' student.id %}">Инфо</a></li>
     {% endfor %}
+
   </ul>
 </body>
 </html>
