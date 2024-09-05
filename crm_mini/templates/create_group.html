@@ -5,7 +5,7 @@
     <title>Форма по добавлению нового Покемона</title>
 </head>
 <body>
-    <a href="{% url 'back:home' %}">← На главную</a>
+    {% include "includes/header.html" %}
     <h1>Добавить новую группу</h1>
     <form method="post">
         {% csrf_token %}

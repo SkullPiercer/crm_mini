@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <a href="{% url 'back:home' %}">← Обратно на домашнюю страницу</a><br>
+    {% include "includes/header.html" %}
     Страница студента с ID {{ student.id }}
     <form method="post">
         {% csrf_token %}

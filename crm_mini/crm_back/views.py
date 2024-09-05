@@ -63,3 +63,8 @@ def student_detail(request, id):
 def download_data(request):
     template = 'download_page.html'
     return render(request, template)
+
+def students_list(request):
+    template = 'students_list.html'
+    students = Student.objects.all()
+    return render(request, template, context={'students':students})

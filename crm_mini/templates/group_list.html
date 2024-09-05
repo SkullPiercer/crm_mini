@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-  <a href="{% url 'back:home' %}">← Обратно на домашнюю страницу</a>
+  {% include "includes/header.html" %}
   <table border="1" style="font-size:20px;">
       {% for group in groups %}
         <tr>

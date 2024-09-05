@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% include "includes/header.html" %}
+  <h1>СПИСОК ВСЕХ УЧЕНИКОВ</h1>
+  <ul>
+    {% for student in students %}
+      <li>{{ student.id }} {{ student.name }} <a href="{% url 'back:student_detail' student.id %}">Инфо</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

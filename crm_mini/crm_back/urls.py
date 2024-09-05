@@ -13,4 +13,5 @@ urlpatterns = [
     path('group_detail/<int:id>/', views.group_detail, name='group_detail'),
     path('student_detail/<int:id>/', views.student_detail, name='student_detail'),
     path('download_data/', views.download_data, name='download_data'),
+    path('students_list/', views.students_list, name='students_list'),
 ]
