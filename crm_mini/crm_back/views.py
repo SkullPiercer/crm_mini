@@ -58,3 +58,8 @@ def student_detail(request, id):
     else:
         form = StudentUpdateForm(instance=student)
     return render(request, template, context={'student':student, 'form': form})
+
+
+def download_data(request):
+    template = 'download_page.html'
+    return render(request, template)
