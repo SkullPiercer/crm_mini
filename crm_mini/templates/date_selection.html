@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% include "includes/header.html" %}
+  <h1>ВЫБЕРИТЕ ДАТУ</h1>
+  <br>
+    <form method="GET" action="{% url 'back:download_data' %}">
+        <input type="date" name="date">
+        <button type="submit">Поиск</button>
+    </form>
+  <br>
+</body>
+</html>

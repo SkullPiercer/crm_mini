@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -47,7 +47,7 @@ def group_detail(request, id):
 
     all_students = Student.objects.filter(group=group)
 
-    return render(request, template, context={'group': group, 'form': form, 'all_students':all_students})
+    return render(request, template, context={'group': group, 'form': form, 'all_students': all_students})
 
 
 def student_detail(request, id):
@@ -61,12 +61,33 @@ def student_detail(request, id):
             return HttpResponseRedirect(request.path_info)
     else:
         form = StudentUpdateForm(instance=student)
-    return render(request, template, context={'student':student, 'form': form})
+    return render(request, template, context={'student': student, 'form': form})
+
+
+def date_selection(request):
+    template = 'date_selection.html'
+    return render(request, template)
 
 
 def download_data(request):
-    template = 'download_page.html'
-    return render(request, template)
+    date = request.GET.get('date')
+
+    if not date:
+        return HttpResponse("Дата не указана", status=400)
+
+    groups = Group.objects.filter(date=date)
+
+    content = "ID, Название, Время\n"
+    for group in groups:
+        content += f"{group.id}, {group.time}\n"
+
+    file_name = f'{date}_data.txt'
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = f'attachment; filename="{file_name}"'
+    response.write(content)
+
+    return response
+
 
 def students_list(request):
     template = 'students_list.html'
@@ -75,4 +96,4 @@ def students_list(request):
         students = Student.objects.filter(name__icontains=name)
     else:
         students = Student.objects.all()
-    return render(request, template, context={'students':students})
+    return render(request, template, context={'students': students})
