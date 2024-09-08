@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% include "includes/header.html" %}
+{% extends "base.html" %}
+{% block title %}
+    {{ student.name }}
+{% endblock %}
+{% block content %}
     Страница студента с ID {{ student.id }}
     <form method="post">
         {% csrf_token %}
@@ -34,5 +31,4 @@
         <li>Заметка менеджера отсутствует</li>
     {% endif %}
 </ul>
-</body>
-</html>
+{% endblock %}

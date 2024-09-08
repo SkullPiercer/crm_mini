@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  {% include "includes/header.html" %}
-   <br>
+{% extends "base.html" %}
+{% block title %}
+    Список групп
+{% endblock %}
+{% block content %}
+     <br>
     <form method="GET" action="{% url 'back:group_list' %}">
         <input type="date" name="date">
         <button type="submit">Поиск</button>
@@ -31,6 +28,4 @@
         <tr>
       {% endfor %}
   </table>
-
-</body>
-</html>
+{% endblock %}

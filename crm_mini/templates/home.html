@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
- <ul>
-     <li><a href="{% url 'back:create_group' %}">Добавить группу</a></li>
-     <li><a href="{% url 'back:group_list' %}">Список всех групп</a></li>
-     <li><a href="{% url 'back:students_list' %}">Список всех студентов</a></li>
-     <li><a href="{% url 'back:date_selection' %}">Скачать ОС за день</a></li>
- </ul>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}
+    Главное меню
+{% endblock %}
+{% block content %}
+  <li><a href="{% url 'back:create_group' %}">Добавить группу</a></li>
+  <li><a href="{% url 'back:group_list' %}">Список всех групп</a></li>
+  <li><a href="{% url 'back:students_list' %}">Список всех студентов</a></li>
+  <li><a href="{% url 'back:date_selection' %}">Скачать ОС за день</a></li>
+{% endblock %}

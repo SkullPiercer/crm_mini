@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Группа</title>
-</head>
-<body>
-  {% include "includes/header.html" %}
+{% extends "base.html" %}
+{% block title %}
+    Группа #{{ group.id }}
+{% endblock %}
+{% block content %}
   <h1>Группа #{{ group.id }}</h1>
   <h2>Добавить ученика</h2>
     <form method="post">
@@ -18,5 +15,4 @@
 {% for student in all_students %}
   <a href="{% url 'back:student_detail' student.id %}">{{ student.name }}</a> <br>
 {% endfor %}
-</body>
-</html>
+{% endblock %}

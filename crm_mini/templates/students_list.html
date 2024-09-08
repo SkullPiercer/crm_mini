@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  {% include "includes/header.html" %}
+{% extends "base.html" %}
+{% block title %}
+    Все ученики
+{% endblock %}
+{% block content %}
   <h1>СПИСОК ВСЕХ УЧЕНИКОВ</h1>
   <ul>
     <form method="GET" action="{% url 'back:students_list' %}">
@@ -18,5 +15,4 @@
     {% endfor %}
 
   </ul>
-</body>
-</html>
+{% endblock %}

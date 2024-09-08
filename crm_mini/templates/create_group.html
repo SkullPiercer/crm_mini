@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Форма по добавлению нового Покемона</title>
-</head>
-<body>
-    {% include "includes/header.html" %}
-    <h1>Добавить новую группу</h1>
+{% extends "base.html" %}
+{% block title %}
+    Создать группу
+{% endblock %}
+{% block content %}
+<h1>Добавить новую группу</h1>
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Добавить группу</button>
     </form>
-</body>
-</html>
+{% endblock %}
